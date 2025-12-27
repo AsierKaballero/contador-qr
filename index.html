@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contador</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 25vh;
+    }
+    #contador {
+      font-size: 1.8em;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Cuenta atrás</h1>
+  <div id="contador"></div>
+
+  <script>
+    const fechaObjetivo = new Date("2026-02-08T18:00:00");
+
+    function actualizarContador() {
+      const ahora = new Date();
+      let diferencia = fechaObjetivo - ahora;
+      let texto = "";
+
+      if (diferencia > 0) {
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+        const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+        const segundos = Math.floor((diferencia / 1000) % 60);
+
+        texto = `Faltan ${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
+      } else {
+        diferencia = Math.abs(diferencia);
+
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+        const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+        const segundos = Math.floor((diferencia / 1000) % 60);
+
+        texto = `Han pasado ${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
+      }
+
+      document.getElementById("contador").textContent = texto;
+    }
+
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+  </script>
+
+</body>
+</html>
