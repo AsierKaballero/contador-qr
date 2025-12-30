@@ -4,25 +4,76 @@
   <meta charset="UTF-8">
   <title>Contador</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
     body {
       font-family: Arial, sans-serif;
+
+      /* Imagen de fondo */
+      background-image: url("background.jpg");
+      background-size: cover;        /* Se adapta a cualquier pantalla */
+      background-position: center;   /* Siempre centrada */
+      background-repeat: no-repeat;
+      background-attachment: fixed;  /* Escritorio */
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      margin-top: 25vh;
     }
+
+    /* Contenedor del texto */
+    .contenedor {
+      background-color: rgba(0, 0, 0, 0.55); /* Oscurece el fondo */
+      color: white;
+      padding: 30px 40px;
+      border-radius: 14px;
+      max-width: 90%;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 2em;
+    }
+
     #contador {
-      font-size: 1.8em;
+      font-size: 1.5em;
+      line-height: 1.4;
+    }
+
+    /* Ajustes específicos para móvil */
+    @media (max-width: 600px) {
+      .contenedor {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      #contador {
+        font-size: 1.2em;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <h1>Cuenta atrás</h1>
-  <div id="contador"></div>
+  <div class="contenedor">
+    <h1>Cuenta atrás</h1>
+    <div id="contador"></div>
+  </div>
 
   <script>
     const fechaObjetivo = new Date("2026-02-08T20:00:00");
-    // const fechaObjetivo = new Date("2025-12-27T19:42:00");
+    // const fechaObjetivo = new Date("2025-12-27T19:42:00"); // prueba
 
     function actualizarContador() {
       const ahora = new Date();
